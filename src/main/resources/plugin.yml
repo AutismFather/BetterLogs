@@ -1,0 +1,17 @@
+name: BetterLogs
+version: '${project.version}'
+main: com.autcraft.com.betterlogs.BetterLogs
+api-version: 1.16
+authors: [ Autcraft ]
+description: Adds more info to your log files
+website: https://www.autcraft.com
+permission:
+  betterlogs.alerts.sign:
+    description: Shows sign creation alerts to player
+    default: op
+  betterlogs.alerts.anvil:
+    description: Shows renamed items in anvil to player
+    default: op
+  betterlogs.alerts.book:
+    description: Shows book contents to player
+    default: op
