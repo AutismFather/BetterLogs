@@ -1,3 +1,5 @@
+<img src="https://www.spigotmc.org/data/resource_icons/95/95934.jpg?1630677236" width="96">
+
 # BetterLogs
 Minecraft's logs do not record items renamed in an anvil, contents written onto a sign or anything put into a book. These are huge security flaws and trolls know it.
 This information needs to be recorded and visible in console. With BetterLogs, staff can watch the full contents of these actions, as well as sign placements, as they happen via console access or be able to go back any time to look up this data in the server logs.
