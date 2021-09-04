@@ -1,6 +1,7 @@
 package com.autcraft.com.betterlogs.listeners;
 
 import com.autcraft.com.betterlogs.BetterLogs;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -71,13 +72,9 @@ public class AnvilSpyListener implements Listener {
         // Create a string with all of the important information to send ot the logs
         this.response = player.getName() + " renamed " + originalItem.getType().toString() + " to \"" + newName + "\"";
 
-        // Show this to players with the permission betterlogs.alerts.signspy
-        for (Player onlinePlayer : plugin.getServer().getOnlinePlayers()) {
-            if( onlinePlayer.hasPermission("betterlogs.alerts.anvil") ){
-                // Send the person an alert
-                onlinePlayer.sendMessage(ChatColor.AQUA + "[Anvil] " + ChatColor.RESET + this.response);
-            }
-        }
+        // Show this to players with the permission betterlogs.alerts.anvil
+        // Thank you to Define | abyssmc.org for suggestion this method of messaging staff
+        Bukkit.broadcast(ChatColor.AQUA + "[Anvil] " + ChatColor.RESET + this.response, "betterlogs.alerts.anvil");
 
         // Send the report to the log
         BetterLogs.sendToConsole(response);

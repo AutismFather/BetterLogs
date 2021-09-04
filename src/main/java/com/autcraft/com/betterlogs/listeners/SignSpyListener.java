@@ -1,6 +1,7 @@
 package com.autcraft.com.betterlogs.listeners;
 
 import com.autcraft.com.betterlogs.BetterLogs;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -53,12 +54,8 @@ public class SignSpyListener implements Listener {
         this.response = player.getName() + " placed sign with text \"" + signText + "\" in " + location.getWorld().getName() + " at (" + location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ() + ")";
 
         // Show this to players with the permission betterlogs.alerts.signspy
-        for (Player onlinePlayer : plugin.getServer().getOnlinePlayers()) {
-            if( onlinePlayer.hasPermission("betterlogs.alerts.sign") ){
-                // Send the person an alert
-                onlinePlayer.sendMessage(ChatColor.AQUA + "[Sign] " + ChatColor.RESET + this.response);
-            }
-        }
+        // Thank you to Define | abyssmc.org for suggestion this method of messaging staff
+        Bukkit.broadcast(ChatColor.AQUA + "[Sign] " + ChatColor.RESET + this.response, "betterlogs.alerts.sign");
 
         // Send the report to the log
         BetterLogs.sendToConsole(response);

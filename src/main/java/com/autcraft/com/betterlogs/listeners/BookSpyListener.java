@@ -1,6 +1,7 @@
 package com.autcraft.com.betterlogs.listeners;
 
 import com.autcraft.com.betterlogs.BetterLogs;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -66,12 +67,8 @@ public class BookSpyListener implements Listener {
         }
 
         // Show this to players with the permission betterlogs.alerts.book
-        for (Player onlinePlayer : plugin.getServer().getOnlinePlayers()) {
-            if( onlinePlayer.hasPermission("betterlogs.alerts.book") ){
-                // Send the person an alert
-                onlinePlayer.sendMessage(ChatColor.AQUA + "[Book] " + ChatColor.RESET + responseShort);
-            }
-        }
+        // Thank you to Define | abyssmc.org for suggestion this method of messaging staff
+        Bukkit.broadcast(ChatColor.AQUA + "[Book] " + ChatColor.RESET + responseShort, "betterlogs.alerts.book");
 
         // Send the report to the log
         BetterLogs.sendToConsole(response);
