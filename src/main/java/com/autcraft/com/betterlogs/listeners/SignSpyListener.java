@@ -57,7 +57,8 @@ public class SignSpyListener implements Listener {
         // Thank you to Define | abyssmc.org for suggestion this method of messaging staff
         Bukkit.broadcast(ChatColor.AQUA + "[Sign] " + ChatColor.RESET + this.response, "betterlogs.alerts.sign");
 
-        // Send the report to the log
-        BetterLogs.sendToConsole(response);
+        // If enabled in the config, send sign data to console
+        if(plugin.getConfig().getBoolean("log.signs"))
+            BetterLogs.sendToConsole(response);
     }
 }

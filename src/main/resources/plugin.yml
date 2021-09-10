@@ -5,7 +5,14 @@ api-version: 1.16
 authors: [ Autcraft ]
 description: Adds more info to your log files
 website: https://www.autcraft.com
+commands:
+  betterlogs:
+    description: BetterLogs command
+    aliases: bl
 permission:
+  betterlogs.reload:
+    description: Reloads the config file
+    default: op
   betterlogs.alerts.sign:
     description: Shows sign creation alerts to player
     default: op

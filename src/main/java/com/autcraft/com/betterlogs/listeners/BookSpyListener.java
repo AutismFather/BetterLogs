@@ -70,7 +70,8 @@ public class BookSpyListener implements Listener {
         // Thank you to Define | abyssmc.org for suggestion this method of messaging staff
         Bukkit.broadcast(ChatColor.AQUA + "[Book] " + ChatColor.RESET + responseShort, "betterlogs.alerts.book");
 
-        // Send the report to the log
+        // If enabled in the config, send book data to console
+        if(plugin.getConfig().getBoolean("log.books"))
         BetterLogs.sendToConsole(response);
     }
 }

@@ -76,7 +76,8 @@ public class AnvilSpyListener implements Listener {
         // Thank you to Define | abyssmc.org for suggestion this method of messaging staff
         Bukkit.broadcast(ChatColor.AQUA + "[Anvil] " + ChatColor.RESET + this.response, "betterlogs.alerts.anvil");
 
-        // Send the report to the log
+        // If enabled in the config, send anvil data to console
+        if(plugin.getConfig().getBoolean("log.anvils"))
         BetterLogs.sendToConsole(response);
     }
 }
