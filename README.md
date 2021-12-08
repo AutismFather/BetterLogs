@@ -1,4 +1,4 @@
-<p align="center"><img src="https://www.spigotmc.org/data/resource_icons/95/95934.jpg?1630677236" width="96"></p>
+<p align="center"><img src="https://www.spigotmc.org/data/resource_icons/95/95934.jpg?1630677236" width="128"></p>
 
 # BetterLogs
 Minecraft's logs do not record items renamed in an anvil, contents written onto a sign or anything put into a book. These are huge security flaws and trolls know it.
