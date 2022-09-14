@@ -30,11 +30,6 @@ public class AnvilSpyListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e){
 
-        // If anvil logging is turned off, just stop here.
-        if( !plugin.getConfig().getBoolean("log.anvils") ){
-            return;
-        }
-
         // Is this a player? Has to be, right? but if not, exit.
         if( !(e.getWhoClicked() instanceof Player) ){
             return;
@@ -81,9 +76,11 @@ public class AnvilSpyListener implements Listener {
         if( originalName.isEmpty() )
             originalName = originalItem.getType().toString();
 
+        // Get the alert and console strings from the config file
         String alert = plugin.getConfig().getString("anvils.alert");
         String console = plugin.getConfig().getString("anvils.console");
 
+        // Variable replacements
         alert = alert.replace("{player}", player.getName());
         alert = alert.replace("{count}", itemCount+"");
         alert = alert.replace("{item}", originalItem.getType().toString());
@@ -97,7 +94,7 @@ public class AnvilSpyListener implements Listener {
         console = console.replace("{oldname}", originalName);
         console = console.replace("{newname}", newName);
 
-        // Show this to players with the permission betterlogs.alerts.signspy
+        // Show this to players with the permission betterlogs.alerts.anvil
         // Thank you to Define | abyssmc.org for suggestion this method of messaging staff
         Bukkit.broadcast(alert, "betterlogs.alerts.anvil");
 

@@ -56,14 +56,9 @@ public final class BetterLogs extends JavaPlugin {
             return true;
         }
 
-        // Fail if console. Consoles get alerts whether they want them or not.
-        if (sender instanceof ConsoleCommandSender) {
-            sender.sendMessage("This can not be run from console");
-            return true;
-        }
-
         // If this is not a player running the command (who would it be then??), just exit out
         if (!(sender instanceof Player)) {
+            sender.sendMessage("This can not be run from console");
             return true;
         }
         return false;

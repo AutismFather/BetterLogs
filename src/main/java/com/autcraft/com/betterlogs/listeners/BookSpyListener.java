@@ -26,14 +26,11 @@ public class BookSpyListener implements Listener {
 
     @EventHandler
     public void onBookEdit(PlayerEditBookEvent e){
-        String title;
         StringBuilder contents = new StringBuilder();
         String content;
         String alertContent = "";
         String bookAction;
         String bookTitle = "";
-        String response;
-        String responseShort;
         int charLimit = 256;
 
         // Get the player that wrote the book
@@ -68,6 +65,7 @@ public class BookSpyListener implements Listener {
         String alert = plugin.getConfig().getString("books.alert");
         String console = plugin.getConfig().getString("books.console");
 
+        // Variable replacements
         alert = alert.replace("{player}", player.getName());
         alert = alert.replace("{bookaction}", bookAction);
         alert = alert.replace("{booktitle}", bookTitle);

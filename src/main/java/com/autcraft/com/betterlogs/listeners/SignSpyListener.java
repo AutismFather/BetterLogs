@@ -51,11 +51,11 @@ public class SignSpyListener implements Listener {
         //Location playerLocation = e.getPlayer().getLocation();
         Location location = e.getBlock().getLocation();
 
-        // Create a string with all of the important information to send ot the logs
-        //this.response = player.getName() + " placed sign with text \"" + signText + "\" in " + location.getWorld().getName() + " at (" + location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ() + ")";
+        // Get strings from config.yml
         String alert = plugin.getConfig().getString("signs.alert");
         String console = plugin.getConfig().getString("signs.console");
 
+        // Variable replacements
         alert = alert.replace("{player}", player.getName());
         alert = alert.replace("{sign}", signText);
         alert = alert.replace("{world}", location.getWorld().getName());
