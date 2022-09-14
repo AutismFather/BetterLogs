@@ -11,6 +11,8 @@ Improve your logs to catch troll activity with BetterLogs.
 - Sign contents along with the world and x,y,x coordinates are recorded in the server logs
 - Book contents on edit and signed books are recorded in the server logs
 - Real time alerts can be sent via in game chat to staff with appropriate permissions
+- Extra details, such as full book contents, are sent to the log/console
+- Alerts can be sent to Discord channels via webhooks (instructions in config.yml)
 
 ## Permissions
 - betterlogs.alerts.*

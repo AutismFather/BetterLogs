@@ -15,10 +15,10 @@ permission:
     default: op
   betterlogs.alerts.sign:
     description: Shows sign creation alerts to player
-    default: op
+    default: true
   betterlogs.alerts.anvil:
     description: Shows renamed items in anvil to player
-    default: op
+    default: true
   betterlogs.alerts.book:
     description: Shows book contents to player
-    default: op
+    default: true

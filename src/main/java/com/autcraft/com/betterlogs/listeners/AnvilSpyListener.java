@@ -1,6 +1,7 @@
 package com.autcraft.com.betterlogs.listeners;
 
 import com.autcraft.com.betterlogs.BetterLogs;
+import com.autcraft.com.betterlogs.Webhook;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -28,6 +29,12 @@ public class AnvilSpyListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e){
+
+        // If anvil logging is turned off, just stop here.
+        if( !plugin.getConfig().getBoolean("log.anvils") ){
+            return;
+        }
+
         // Is this a player? Has to be, right? but if not, exit.
         if( !(e.getWhoClicked() instanceof Player) ){
             return;
@@ -57,6 +64,7 @@ public class AnvilSpyListener implements Listener {
         String newName = renamedItem.getItemMeta().getDisplayName();
         AnvilInventory anvilInventory = (AnvilInventory) inventory;
         ItemStack originalItem = anvilInventory.getItem(0);
+        int itemCount = originalItem.getAmount();
         String originalName = "";
 
         // Make sure it's not empty
@@ -69,15 +77,40 @@ public class AnvilSpyListener implements Listener {
             return;
         }
 
-        // Create a string with all of the important information to send ot the logs
-        this.response = player.getName() + " renamed " + originalItem.getType().toString() + " to \"" + newName + "\"";
+        // If there is no original name, just pretend the name is the item type
+        if( originalName.isEmpty() )
+            originalName = originalItem.getType().toString();
 
-        // Show this to players with the permission betterlogs.alerts.anvil
+        String alert = plugin.getConfig().getString("anvils.alert");
+        String console = plugin.getConfig().getString("anvils.console");
+
+        alert = alert.replace("{player}", player.getName());
+        alert = alert.replace("{count}", itemCount+"");
+        alert = alert.replace("{item}", originalItem.getType().toString());
+        alert = alert.replace("{oldname}", originalName);
+        alert = alert.replace("{newname}", newName);
+        alert = ChatColor.translateAlternateColorCodes('&', alert);
+
+        console = console.replace("{player}", player.getName());
+        console = console.replace("{count}", itemCount+"");
+        console = console.replace("{item}", originalItem.getType().toString());
+        console = console.replace("{oldname}", originalName);
+        console = console.replace("{newname}", newName);
+
+        // Show this to players with the permission betterlogs.alerts.signspy
         // Thank you to Define | abyssmc.org for suggestion this method of messaging staff
-        Bukkit.broadcast(ChatColor.AQUA + "[Anvil] " + ChatColor.RESET + this.response, "betterlogs.alerts.anvil");
+        Bukkit.broadcast(alert, "betterlogs.alerts.anvil");
 
-        // If enabled in the config, send anvil data to console
+        // If enabled in the config, send sign data to console
         if(plugin.getConfig().getBoolean("log.anvils"))
-        BetterLogs.sendToConsole(response);
+            BetterLogs.sendToConsole(console);
+
+        // If enabled, send to Discord webhook
+        if( plugin.getConfig().getBoolean("anvils.discord.enabled") ) {
+            Webhook webhook = new Webhook();
+            String url = plugin.getConfig().getString("anvils.discord.webhook");
+            String image = plugin.getConfig().getString("anvils.discord.image");
+            webhook.send(url, "Anvil", console, image);
+        }
     }
 }
