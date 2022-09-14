@@ -23,19 +23,19 @@ anvils:
   console: '[BetterLogs] {player} renamed {count} {item}(s) from {oldname} to {newname}'
   discord:
     enabled: true
-    webhook: 'https://discord.com/api/webhooks/1019418365539922020/WGIPGs2otAB7rEXQ_zoB_eawIvjgXxyMJtAQUZiCuOwiCu0tTTyGRg8svATvk41xZoVw'
+    webhook: ''
     image: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/6f/Chipped_Anvil_%28N%29_JE3.png/revision/latest?cb=20201126085316'
 signs:
   alert: '&b[Sign]&7 {player} placed sign with text {sign} in {world} at ({x},{y},{z})'
   console: '[BetterLogs] {player} placed sign with text {sign} in {world} at ({x},{y},{z})'
   discord:
     enabled: true
-    webhook: 'https://discord.com/api/webhooks/1019418365539922020/WGIPGs2otAB7rEXQ_zoB_eawIvjgXxyMJtAQUZiCuOwiCu0tTTyGRg8svATvk41xZoVw'
+    webhook: ''
     image: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/74/Oak_Sign_%280%29.png/revision/latest?cb=20211226120852'
 books:
   alert: '&b[Book]&7 {player} {bookaction} a book titled {booktitle}: {book}... see logs for more'
   console: '[BetterLogs] {player} {bookaction} a book titled {booktitle}: {book}'
   discord:
     enabled: true
-    webhook: 'https://discord.com/api/webhooks/1019418365539922020/WGIPGs2otAB7rEXQ_zoB_eawIvjgXxyMJtAQUZiCuOwiCu0tTTyGRg8svATvk41xZoVw'
+    webhook: ''
     image: 'https://static.wikia.nocookie.net/minecraft/images/1/13/BookAndQuillNew.png/revision/latest?cb=20190911213511'
